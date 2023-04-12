@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<head>
+  <title>Visualizer</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+
+<body>
+  <div class="container-fluid">
+    <div class="row bg-secondary bg-gradient">
+      <div class="col">
+        <h2 class="text-center">Cloud</h2>
+      </div>
+      <div class="col">
+        <h2 class="text-center">Fog</h2>
+      </div>
+    </div>
+    <div class="row bg-secondary bg-gradient">
+      <div class="col">
+        <label for="CloudnbHops">Number of hops:</label>
+        <select class="form-select" name="CloudnbHops" id="CloudnbHops" onchange="updateImgCloud()">
+          <option value="2">2</option>
+          <option value="5">5</option>
+          <option value="7">7</option>
+        </select>
+        <label for="cloudNetSize">Netsize:</label>
+        <select class="form-select" name="cloudNetSize" id="cloudNetSize" onchange="updateImgCloud()">
+          <option value="10000.0">10Kb</option>
+          <option value="125000.0">1.5Mb</option>
+        </select>
+        <label for="cloudExecR">Exec Ratio:</label>
+        <select class="form-select" name="cloudExecR" id="cloudExecR" onchange="updateImgCloud()">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="10">10</option>
+        </select>
+        <label for="cloudProtoc">Protocol:</label>
+        <select class="form-select" name="cloudProtoc" id="cloudProtoc" onchange="updateImgCloud()">
+          <option value="tcp">TCP</option>
+          <option value="udp">UDP</option>
+        </select>
+        <label for="cloudColoc">Coloc:</label>
+        <select class="form-select" name="cloudColoc" id="cloudColoc" onchange="updateImgCloud()">
+          <option value="">No</option>
+          <option value="coloc_">Yes</option>
+        </select>
+      </div>
+      <div class="col">
+        <label for="fogIntraLat">Intra fog latency:</label>
+        <select class="form-select"  name="fogIntraLat" id="fogIntraLat" onchange="updateImgFog()">
+          <option value="2">2ms</option>
+          <option value="5">5ms</option>
+        </select>
+        <label for="fogNetSize">Netsize:</label>
+        <select class="form-select" name="fogNetSize" id="fogNetSize" onchange="updateImgFog()">
+          <option value="10000.0">10Kb</option>
+          <option value="125000.0">1.5Mb</option>
+        </select>
+        <label for="fogExecR">Exec Ratio:</label>
+        <select class="form-select" name="fogExecR" id="fogExecR" onchange="updateImgFog()">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="10">10</option>
+        </select>
+        <label for="fogProtoc">Protocol:</label>
+        <select class="form-select" name="fogProtoc" id="fogProtoc" onchange="updateImgFog()">
+          <option value="tcp">TCP</option>
+          <option value="udp">UDP</option>
+        </select>
+        <label for="fogColoc">Coloc:</label>
+        <select class="form-select" name="fogColoc" id="fogColoc" onchange="updateImgFog()">
+          <option value="">No</option>
+          <option value="coloc_">Yes</option>
+        </select>
+      </div>
+      <hr/>
+    </div>
+    <div class="row">
+      <div class="col">
+          <img id="figCloudEnergy" class="img-fluid" src="" />
+      </div>
+      <div class="col">
+        <img id="figCloudEnergy2" class="img-fluid" src="" />
+      </div>
+      <div class="col">
+        <img id="figFogEnergy" class="img-fluid" src="" />
+      </div>
+      <div class="col">
+        <img id="figFogEnergy2" class="img-fluid" src="" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <img id="figCloudExecDur" class="img-fluid" src="" />
+      </div>
+      <div class="col">
+        <img id="figFogExecDur" class="img-fluid" src="" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <img id="figCloudComDur" class="img-fluid" src="" />
+      </div>
+      <div class="col">
+        <img id="figFogComDur" class="img-fluid" src="" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <img id="figCloudEE" class="img-fluid" src="" />
+      </div>
+      <div class="col">
+        <img id="figCloudEE2" class="img-fluid" src="" />
+      </div>
+      <div class="col">
+        <img id="figFogEE" class="img-fluid" src="" />
+      </div>
+      <div class="col">
+        <img id="figFogEE2" class="img-fluid" src="" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <img id="figCloudNInst" class="img-fluid" src="" />
+      </div>
+      <div class="col">
+        <img id="figFogNInst" class="img-fluid" src="" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <img id="figCloudNInstTot" class="img-fluid" src="" />
+      </div>
+      <div class="col">
+        <img id="figFogNInstTot" class="img-fluid" src="" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <img id="figCloudCO2" class="img-fluid" src="" />
+      </div>
+      <div class="col">
+        <img id="figFogCO2" class="img-fluid" src="" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+          <img id="cloudfigCloudLoad" class="img-fluid" src="" />
+      </div>
+      <div class="col">
+        <img id="cloudfigEdgeLoad" class="img-fluid" src="" />
+      </div>
+      <div class="col">
+        <img id="fogfigCloudLoad" class="img-fluid" src="" />
+      </div>
+      <div class="col">
+        <img id="fogfigEdgeLoad" class="img-fluid" src="" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <img id="figCloudReqFinished" class="img-fluid" src="" />
+      </div>
+      <div class="col">
+        <img id="figFogReqFinished" class="img-fluid" src="" />
+      </div>
+    </div>
+  </table>
+
+  <script>
+    function updateImgCloud() {
+      var execR = document.getElementById("cloudExecR").value
+      var nbH = document.getElementById("CloudnbHops").value
+      var netSize = document.getElementById("cloudNetSize").value
+      var coloc = document.getElementById("cloudColoc").value
+      var protoC = document.getElementById("cloudProtoc").value
+      var path = "img/out_cloud_14APPS_video_cloud_"+coloc+nbH+"_"+netSize+"_"+execR+"_"+protoC
+      document.getElementById("figCloudEnergy").src = path+"_energy.svg";
+      document.getElementById("figCloudEnergy2").src = path+"_energy_2.svg";
+      document.getElementById("figCloudExecDur").src = path+"_execDur.svg";
+      document.getElementById("figCloudComDur").src = path+"_comDur.svg";
+      document.getElementById("cloudfigCloudLoad").src = path+"_cloudLoad.svg";
+      document.getElementById("cloudfigEdgeLoad").src = path+"_edgeLoad.svg";
+      document.getElementById("figCloudReqFinished").src = path+"_reqFinished.svg";
+      document.getElementById("figCloudEE").src = path+"_endToEndDur.svg";
+      document.getElementById("figCloudEE2").src = path+"_endToEndDur2.svg";
+      document.getElementById("figCloudNInst").src = path+"_nbInst.svg";
+      document.getElementById("figCloudNInstTot").src = path+"_nbInstTot.svg";
+      document.getElementById("figCloudCO2").src = path+"_co2.svg";
+
+
+      console.log("done")
+    }
+
+    function updateImgFog() {
+      var execR = document.getElementById("fogExecR").value
+      var lat = document.getElementById("fogIntraLat").value
+      var netSize = document.getElementById("fogNetSize").value
+      var protoC = document.getElementById("fogProtoc").value
+      var coloc = document.getElementById("fogColoc").value
+      var path = "img/out_fog_14APPS_video_fog_"+coloc+lat+"ms_"+netSize+"_"+execR+"_"+protoC
+      document.getElementById("figFogEnergy").src = path+"_energy.svg";
+      document.getElementById("figFogEnergy2").src = path+"_energy_2.svg";
+      document.getElementById("figFogExecDur").src = path+"_execDur.svg";
+      document.getElementById("figFogComDur").src = path+"_comDur.svg";
+      document.getElementById("fogfigCloudLoad").src = path+"_cloudLoad.svg";
+      document.getElementById("fogfigEdgeLoad").src = path+"_edgeLoad.svg";
+      document.getElementById("figFogReqFinished").src = path+"_reqFinished.svg";
+      document.getElementById("figFogEE").src = path+"_endToEndDur.svg";
+      document.getElementById("figFogEE2").src = path+"_endToEndDur2.svg";
+      document.getElementById("figFogNInst").src = path+"_nbInst.svg";
+      document.getElementById("figFogNInstTot").src = path+"_nbInstTot.svg";
+      document.getElementById("figFogCO2").src = path+"_co2.svg";
+
+      console.log("done")
+    }
+
+    window.onload = function(e){ updateImgCloud(); updateImgFog();}
+  </script>
+</body>

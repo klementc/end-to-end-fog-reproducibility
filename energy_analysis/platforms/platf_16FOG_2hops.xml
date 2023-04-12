@@ -1,0 +1,2385 @@
+<?xml version='1.0'?>
+<!-- generated using: gen_platform_floyd.py 64 16 64 4 44.23Mbps 4 2ms 0.5ms 5ms 5ms 0ms 1 2 -->
+<!DOCTYPE platform SYSTEM "http://simgrid.gforge.inria.fr/simgrid/simgrid.dtd">
+<platform version="4.1">
+  <zone id="world" routing="Floyd">
+    <zone id="useless" routing="Full">
+      <host id="manager" speed="4Gf"/>
+    </zone>
+
+
+    <!-- Cloud zone (cluster of nodes) -->
+    <zone id="cloud-zone" routing="Full">
+      <cluster id="cluster-cloud"
+              prefix="cloud_" radical="0-63" suffix=""
+              speed="4Gf" bw="10Gbps" lat="0.5ms" core="32">
+        <!--  List of idle_power:epsilon_power:max_power pairs (in Watts) -->
+        <!--  The list must contain one speed tuple for each previously defined pstate-->
+      <prop id="wattage_per_state" value="94.75:116.12:178.88" /> <!-- see https://gitlab.inria.fr/fheinric/paper-simgrid-energy/-/blob/master/experiments/simgrid/platform/platform_taurus_ep.xml -->
+      <prop id="wattage_off" value="0" />
+      </cluster>
+    </zone>
+
+
+    <zone id="core-zone_0" routing="Full">
+      <!-- Intermediate routers -->
+          <host id="core_router_0" speed="100.0Mf">
+          <prop id="wattage_per_state" value="555.0:555.0:555.0" /> <!-- not really used to do anything, just for energy -->
+          <prop id="wattage_off" value="555.0" />
+      </host>
+    </zone>
+        <zone id="core-zone_1" routing="Full">
+      <!-- Intermediate routers -->
+          <host id="core_router_1" speed="100.0Mf">
+          <prop id="wattage_per_state" value="555.0:555.0:555.0" /> <!-- not really used to do anything, just for energy -->
+          <prop id="wattage_off" value="555.0" />
+      </host>
+    </zone>
+
+
+        <!-- Edge Cluster #0 layer #0 - N hosts connected to cluster cloud for data and process offloading-->
+        <zone id="edge-0-l0" routing="Full">
+<!--          <host id="edge_router_0" speed="100.0Mf">
+            <prop id="wattage_per_state" value="150.0:150.0:150.0" />
+            <prop id="wattage_off" value="150" />
+          </host>
+-->
+          <cluster id="cluster-edge-0-l0" prefix="edge-0-l0_" radical="0-63" suffix=""
+                  speed="1Gf" bw="1Gbps" lat="2ms" core="4">
+            <!--  List of idle_power:epsilon_power:max_power pairs (in Watts) -->
+            <!--  The list must contain one speed tuple for each previously defined pstate-->
+            <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" /> <!-- See Automated power modeling of computing devices: Implementation and use case for Raspberry pis -->
+            <prop id="wattage_off" value="0" />
+          </cluster>
+        </zone>
+                <!-- Edge Cluster #1 layer #0 - N hosts connected to cluster cloud for data and process offloading-->
+        <zone id="edge-1-l0" routing="Full">
+<!--          <host id="edge_router_1" speed="100.0Mf">
+            <prop id="wattage_per_state" value="150.0:150.0:150.0" />
+            <prop id="wattage_off" value="150" />
+          </host>
+-->
+          <cluster id="cluster-edge-1-l0" prefix="edge-1-l0_" radical="0-63" suffix=""
+                  speed="1Gf" bw="1Gbps" lat="2ms" core="4">
+            <!--  List of idle_power:epsilon_power:max_power pairs (in Watts) -->
+            <!--  The list must contain one speed tuple for each previously defined pstate-->
+            <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" /> <!-- See Automated power modeling of computing devices: Implementation and use case for Raspberry pis -->
+            <prop id="wattage_off" value="0" />
+          </cluster>
+        </zone>
+                <!-- Edge Cluster #2 layer #0 - N hosts connected to cluster cloud for data and process offloading-->
+        <zone id="edge-2-l0" routing="Full">
+<!--          <host id="edge_router_2" speed="100.0Mf">
+            <prop id="wattage_per_state" value="150.0:150.0:150.0" />
+            <prop id="wattage_off" value="150" />
+          </host>
+-->
+          <cluster id="cluster-edge-2-l0" prefix="edge-2-l0_" radical="0-63" suffix=""
+                  speed="1Gf" bw="1Gbps" lat="2ms" core="4">
+            <!--  List of idle_power:epsilon_power:max_power pairs (in Watts) -->
+            <!--  The list must contain one speed tuple for each previously defined pstate-->
+            <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" /> <!-- See Automated power modeling of computing devices: Implementation and use case for Raspberry pis -->
+            <prop id="wattage_off" value="0" />
+          </cluster>
+        </zone>
+                <!-- Edge Cluster #3 layer #0 - N hosts connected to cluster cloud for data and process offloading-->
+        <zone id="edge-3-l0" routing="Full">
+<!--          <host id="edge_router_3" speed="100.0Mf">
+            <prop id="wattage_per_state" value="150.0:150.0:150.0" />
+            <prop id="wattage_off" value="150" />
+          </host>
+-->
+          <cluster id="cluster-edge-3-l0" prefix="edge-3-l0_" radical="0-63" suffix=""
+                  speed="1Gf" bw="1Gbps" lat="2ms" core="4">
+            <!--  List of idle_power:epsilon_power:max_power pairs (in Watts) -->
+            <!--  The list must contain one speed tuple for each previously defined pstate-->
+            <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" /> <!-- See Automated power modeling of computing devices: Implementation and use case for Raspberry pis -->
+            <prop id="wattage_off" value="0" />
+          </cluster>
+        </zone>
+                <!-- Edge Cluster #4 layer #0 - N hosts connected to cluster cloud for data and process offloading-->
+        <zone id="edge-4-l0" routing="Full">
+<!--          <host id="edge_router_4" speed="100.0Mf">
+            <prop id="wattage_per_state" value="150.0:150.0:150.0" />
+            <prop id="wattage_off" value="150" />
+          </host>
+-->
+          <cluster id="cluster-edge-4-l0" prefix="edge-4-l0_" radical="0-63" suffix=""
+                  speed="1Gf" bw="1Gbps" lat="2ms" core="4">
+            <!--  List of idle_power:epsilon_power:max_power pairs (in Watts) -->
+            <!--  The list must contain one speed tuple for each previously defined pstate-->
+            <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" /> <!-- See Automated power modeling of computing devices: Implementation and use case for Raspberry pis -->
+            <prop id="wattage_off" value="0" />
+          </cluster>
+        </zone>
+                <!-- Edge Cluster #5 layer #0 - N hosts connected to cluster cloud for data and process offloading-->
+        <zone id="edge-5-l0" routing="Full">
+<!--          <host id="edge_router_5" speed="100.0Mf">
+            <prop id="wattage_per_state" value="150.0:150.0:150.0" />
+            <prop id="wattage_off" value="150" />
+          </host>
+-->
+          <cluster id="cluster-edge-5-l0" prefix="edge-5-l0_" radical="0-63" suffix=""
+                  speed="1Gf" bw="1Gbps" lat="2ms" core="4">
+            <!--  List of idle_power:epsilon_power:max_power pairs (in Watts) -->
+            <!--  The list must contain one speed tuple for each previously defined pstate-->
+            <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" /> <!-- See Automated power modeling of computing devices: Implementation and use case for Raspberry pis -->
+            <prop id="wattage_off" value="0" />
+          </cluster>
+        </zone>
+                <!-- Edge Cluster #6 layer #0 - N hosts connected to cluster cloud for data and process offloading-->
+        <zone id="edge-6-l0" routing="Full">
+<!--          <host id="edge_router_6" speed="100.0Mf">
+            <prop id="wattage_per_state" value="150.0:150.0:150.0" />
+            <prop id="wattage_off" value="150" />
+          </host>
+-->
+          <cluster id="cluster-edge-6-l0" prefix="edge-6-l0_" radical="0-63" suffix=""
+                  speed="1Gf" bw="1Gbps" lat="2ms" core="4">
+            <!--  List of idle_power:epsilon_power:max_power pairs (in Watts) -->
+            <!--  The list must contain one speed tuple for each previously defined pstate-->
+            <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" /> <!-- See Automated power modeling of computing devices: Implementation and use case for Raspberry pis -->
+            <prop id="wattage_off" value="0" />
+          </cluster>
+        </zone>
+                <!-- Edge Cluster #7 layer #0 - N hosts connected to cluster cloud for data and process offloading-->
+        <zone id="edge-7-l0" routing="Full">
+<!--          <host id="edge_router_7" speed="100.0Mf">
+            <prop id="wattage_per_state" value="150.0:150.0:150.0" />
+            <prop id="wattage_off" value="150" />
+          </host>
+-->
+          <cluster id="cluster-edge-7-l0" prefix="edge-7-l0_" radical="0-63" suffix=""
+                  speed="1Gf" bw="1Gbps" lat="2ms" core="4">
+            <!--  List of idle_power:epsilon_power:max_power pairs (in Watts) -->
+            <!--  The list must contain one speed tuple for each previously defined pstate-->
+            <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" /> <!-- See Automated power modeling of computing devices: Implementation and use case for Raspberry pis -->
+            <prop id="wattage_off" value="0" />
+          </cluster>
+        </zone>
+                <!-- Edge Cluster #8 layer #0 - N hosts connected to cluster cloud for data and process offloading-->
+        <zone id="edge-8-l0" routing="Full">
+<!--          <host id="edge_router_8" speed="100.0Mf">
+            <prop id="wattage_per_state" value="150.0:150.0:150.0" />
+            <prop id="wattage_off" value="150" />
+          </host>
+-->
+          <cluster id="cluster-edge-8-l0" prefix="edge-8-l0_" radical="0-63" suffix=""
+                  speed="1Gf" bw="1Gbps" lat="2ms" core="4">
+            <!--  List of idle_power:epsilon_power:max_power pairs (in Watts) -->
+            <!--  The list must contain one speed tuple for each previously defined pstate-->
+            <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" /> <!-- See Automated power modeling of computing devices: Implementation and use case for Raspberry pis -->
+            <prop id="wattage_off" value="0" />
+          </cluster>
+        </zone>
+                <!-- Edge Cluster #9 layer #0 - N hosts connected to cluster cloud for data and process offloading-->
+        <zone id="edge-9-l0" routing="Full">
+<!--          <host id="edge_router_9" speed="100.0Mf">
+            <prop id="wattage_per_state" value="150.0:150.0:150.0" />
+            <prop id="wattage_off" value="150" />
+          </host>
+-->
+          <cluster id="cluster-edge-9-l0" prefix="edge-9-l0_" radical="0-63" suffix=""
+                  speed="1Gf" bw="1Gbps" lat="2ms" core="4">
+            <!--  List of idle_power:epsilon_power:max_power pairs (in Watts) -->
+            <!--  The list must contain one speed tuple for each previously defined pstate-->
+            <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" /> <!-- See Automated power modeling of computing devices: Implementation and use case for Raspberry pis -->
+            <prop id="wattage_off" value="0" />
+          </cluster>
+        </zone>
+                <!-- Edge Cluster #10 layer #0 - N hosts connected to cluster cloud for data and process offloading-->
+        <zone id="edge-10-l0" routing="Full">
+<!--          <host id="edge_router_10" speed="100.0Mf">
+            <prop id="wattage_per_state" value="150.0:150.0:150.0" />
+            <prop id="wattage_off" value="150" />
+          </host>
+-->
+          <cluster id="cluster-edge-10-l0" prefix="edge-10-l0_" radical="0-63" suffix=""
+                  speed="1Gf" bw="1Gbps" lat="2ms" core="4">
+            <!--  List of idle_power:epsilon_power:max_power pairs (in Watts) -->
+            <!--  The list must contain one speed tuple for each previously defined pstate-->
+            <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" /> <!-- See Automated power modeling of computing devices: Implementation and use case for Raspberry pis -->
+            <prop id="wattage_off" value="0" />
+          </cluster>
+        </zone>
+                <!-- Edge Cluster #11 layer #0 - N hosts connected to cluster cloud for data and process offloading-->
+        <zone id="edge-11-l0" routing="Full">
+<!--          <host id="edge_router_11" speed="100.0Mf">
+            <prop id="wattage_per_state" value="150.0:150.0:150.0" />
+            <prop id="wattage_off" value="150" />
+          </host>
+-->
+          <cluster id="cluster-edge-11-l0" prefix="edge-11-l0_" radical="0-63" suffix=""
+                  speed="1Gf" bw="1Gbps" lat="2ms" core="4">
+            <!--  List of idle_power:epsilon_power:max_power pairs (in Watts) -->
+            <!--  The list must contain one speed tuple for each previously defined pstate-->
+            <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" /> <!-- See Automated power modeling of computing devices: Implementation and use case for Raspberry pis -->
+            <prop id="wattage_off" value="0" />
+          </cluster>
+        </zone>
+                <!-- Edge Cluster #12 layer #0 - N hosts connected to cluster cloud for data and process offloading-->
+        <zone id="edge-12-l0" routing="Full">
+<!--          <host id="edge_router_12" speed="100.0Mf">
+            <prop id="wattage_per_state" value="150.0:150.0:150.0" />
+            <prop id="wattage_off" value="150" />
+          </host>
+-->
+          <cluster id="cluster-edge-12-l0" prefix="edge-12-l0_" radical="0-63" suffix=""
+                  speed="1Gf" bw="1Gbps" lat="2ms" core="4">
+            <!--  List of idle_power:epsilon_power:max_power pairs (in Watts) -->
+            <!--  The list must contain one speed tuple for each previously defined pstate-->
+            <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" /> <!-- See Automated power modeling of computing devices: Implementation and use case for Raspberry pis -->
+            <prop id="wattage_off" value="0" />
+          </cluster>
+        </zone>
+                <!-- Edge Cluster #13 layer #0 - N hosts connected to cluster cloud for data and process offloading-->
+        <zone id="edge-13-l0" routing="Full">
+<!--          <host id="edge_router_13" speed="100.0Mf">
+            <prop id="wattage_per_state" value="150.0:150.0:150.0" />
+            <prop id="wattage_off" value="150" />
+          </host>
+-->
+          <cluster id="cluster-edge-13-l0" prefix="edge-13-l0_" radical="0-63" suffix=""
+                  speed="1Gf" bw="1Gbps" lat="2ms" core="4">
+            <!--  List of idle_power:epsilon_power:max_power pairs (in Watts) -->
+            <!--  The list must contain one speed tuple for each previously defined pstate-->
+            <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" /> <!-- See Automated power modeling of computing devices: Implementation and use case for Raspberry pis -->
+            <prop id="wattage_off" value="0" />
+          </cluster>
+        </zone>
+
+    <zone id="wlan0" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter0" />
+      <host id="STA_0" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_1" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_2" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_3" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_0" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter0" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan1" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter1" />
+      <host id="STA_4" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_5" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_6" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_7" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_1" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter1" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan2" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter2" />
+      <host id="STA_8" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_9" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_10" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_11" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_2" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter2" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan3" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter3" />
+      <host id="STA_12" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_13" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_14" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_15" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_3" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter3" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan4" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter4" />
+      <host id="STA_16" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_17" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_18" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_19" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_4" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter4" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan5" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter5" />
+      <host id="STA_20" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_21" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_22" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_23" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_5" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter5" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan6" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter6" />
+      <host id="STA_24" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_25" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_26" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_27" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_6" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter6" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan7" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter7" />
+      <host id="STA_28" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_29" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_30" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_31" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_7" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter7" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan8" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter8" />
+      <host id="STA_32" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_33" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_34" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_35" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_8" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter8" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan9" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter9" />
+      <host id="STA_36" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_37" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_38" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_39" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_9" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter9" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan10" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter10" />
+      <host id="STA_40" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_41" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_42" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_43" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_10" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter10" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan11" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter11" />
+      <host id="STA_44" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_45" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_46" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_47" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_11" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter11" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan12" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter12" />
+      <host id="STA_48" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_49" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_50" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_51" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_12" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter12" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan13" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter13" />
+      <host id="STA_52" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_53" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_54" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_55" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_13" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter13" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan14" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter14" />
+      <host id="STA_56" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_57" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_58" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_59" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_14" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter14" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan15" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter15" />
+      <host id="STA_60" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_61" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_62" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_63" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_15" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter15" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan16" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter16" />
+      <host id="STA_64" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_65" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_66" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_67" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_16" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter16" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan17" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter17" />
+      <host id="STA_68" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_69" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_70" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_71" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_17" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter17" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan18" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter18" />
+      <host id="STA_72" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_73" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_74" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_75" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_18" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter18" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan19" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter19" />
+      <host id="STA_76" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_77" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_78" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_79" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_19" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter19" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan20" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter20" />
+      <host id="STA_80" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_81" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_82" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_83" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_20" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter20" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan21" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter21" />
+      <host id="STA_84" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_85" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_86" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_87" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_21" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter21" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan22" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter22" />
+      <host id="STA_88" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_89" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_90" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_91" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_22" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter22" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan23" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter23" />
+      <host id="STA_92" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_93" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_94" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_95" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_23" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter23" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan24" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter24" />
+      <host id="STA_96" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_97" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_98" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_99" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_24" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter24" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan25" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter25" />
+      <host id="STA_100" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_101" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_102" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_103" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_25" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter25" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan26" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter26" />
+      <host id="STA_104" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_105" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_106" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_107" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_26" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter26" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan27" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter27" />
+      <host id="STA_108" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_109" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_110" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_111" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_27" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter27" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan28" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter28" />
+      <host id="STA_112" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_113" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_114" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_115" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_28" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter28" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan29" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter29" />
+      <host id="STA_116" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_117" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_118" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_119" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_29" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter29" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan30" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter30" />
+      <host id="STA_120" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_121" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_122" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_123" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_30" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter30" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan31" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter31" />
+      <host id="STA_124" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_125" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_126" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_127" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_31" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter31" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan32" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter32" />
+      <host id="STA_128" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_129" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_130" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_131" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_32" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter32" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan33" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter33" />
+      <host id="STA_132" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_133" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_134" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_135" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_33" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter33" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan34" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter34" />
+      <host id="STA_136" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_137" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_138" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_139" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_34" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter34" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan35" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter35" />
+      <host id="STA_140" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_141" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_142" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_143" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_35" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter35" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan36" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter36" />
+      <host id="STA_144" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_145" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_146" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_147" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_36" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter36" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan37" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter37" />
+      <host id="STA_148" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_149" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_150" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_151" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_37" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter37" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan38" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter38" />
+      <host id="STA_152" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_153" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_154" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_155" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_38" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter38" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan39" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter39" />
+      <host id="STA_156" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_157" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_158" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_159" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_39" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter39" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan40" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter40" />
+      <host id="STA_160" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_161" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_162" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_163" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_40" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter40" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan41" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter41" />
+      <host id="STA_164" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_165" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_166" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_167" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_41" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter41" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan42" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter42" />
+      <host id="STA_168" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_169" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_170" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_171" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_42" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter42" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan43" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter43" />
+      <host id="STA_172" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_173" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_174" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_175" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_43" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter43" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan44" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter44" />
+      <host id="STA_176" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_177" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_178" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_179" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_44" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter44" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan45" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter45" />
+      <host id="STA_180" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_181" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_182" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_183" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_45" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter45" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan46" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter46" />
+      <host id="STA_184" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_185" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_186" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_187" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_46" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter46" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan47" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter47" />
+      <host id="STA_188" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_189" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_190" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_191" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_47" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter47" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan48" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter48" />
+      <host id="STA_192" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_193" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_194" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_195" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_48" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter48" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan49" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter49" />
+      <host id="STA_196" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_197" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_198" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_199" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_49" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter49" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan50" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter50" />
+      <host id="STA_200" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_201" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_202" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_203" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_50" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter50" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan51" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter51" />
+      <host id="STA_204" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_205" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_206" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_207" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_51" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter51" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan52" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter52" />
+      <host id="STA_208" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_209" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_210" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_211" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_52" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter52" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan53" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter53" />
+      <host id="STA_212" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_213" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_214" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_215" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_53" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter53" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan54" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter54" />
+      <host id="STA_216" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_217" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_218" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_219" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_54" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter54" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+    <zone id="wlan55" routing="Wifi">
+      <prop id="access_point" value="WIFIrouter55" />
+      <host id="STA_220" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_221" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_222" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+            <host id="STA_223" speed="100.0Mf" core="4">
+        <prop id="wattage_per_state" value="2.2857:2.2857:6.8201" />
+        <prop id="wattage_off" value="0" />
+      </host>
+
+      <!-- Declare the wifi media (after hosts because our parser is sometimes annoying) -->
+      <link id="AP_55" sharing_policy="WIFI" bandwidth="44.23Mbps" latency="0ms">
+                <prop id = "control_duration" value = "0.0024"/>
+                <prop id = "wifi_watt_values" value = "0.82:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter55" speed="100.0Mf" >
+        <prop id="wattage_per_state" value="11.0:11.0:11.0" />
+        <prop id="wattage_off" value="11.0" />
+      </host>
+    </zone>
+
+    <!-- Links core<->core and core<->cloud -->
+    <link id="Core-link0" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+    <link id="Core-link1" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <!-- Links core <-> edge -->
+    <link id="Backbone-link0" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+    <link id="Backbone-link1" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+    <link id="Backbone-link2" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+    <link id="Backbone-link3" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+    <link id="Backbone-link4" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+    <link id="Backbone-link5" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+    <link id="Backbone-link6" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+    <link id="Backbone-link7" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+    <link id="Backbone-link8" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+    <link id="Backbone-link9" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+    <link id="Backbone-link10" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+    <link id="Backbone-link11" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+    <link id="Backbone-link12" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+    <link id="Backbone-link13" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+    <link id="Backbone-link14" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+    <link id="Backbone-link15" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <!-- Links edge <-> edge -->
+
+
+    <!-- Links edge <-> end-users -->
+    <link id="Collector0" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector1" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector2" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector3" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector4" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector5" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector6" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector7" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector8" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector9" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector10" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector11" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector12" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector13" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector14" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector15" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector16" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector17" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector18" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector19" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector20" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector21" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector22" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector23" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector24" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector25" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector26" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector27" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector28" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector29" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector30" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector31" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector32" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector33" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector34" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector35" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector36" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector37" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector38" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector39" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector40" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector41" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector42" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector43" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector44" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector45" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector46" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector47" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector48" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector49" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector50" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector51" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector52" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector53" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector54" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector55" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector56" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector57" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector58" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector59" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector60" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector61" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector62" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+    <link id="Collector63" sharing_policy="SHARED" bandwidth="48Gbps" latency="5ms" />
+
+
+    <!-- core <-> cloud -->
+  <zoneRoute src="core-zone_1" dst="cloud-zone" gw_src="core_router_1" gw_dst="cloud_cluster-cloud_router" symmetrical="YES">
+    <link_ctn id="Core-link1" />
+  </zoneRoute>
+
+    <!-- Core <-> Core -->
+  <zoneRoute src="core-zone_0" dst="core-zone_1" gw_src="core_router_0" gw_dst="core_router_1" symmetrical="YES">
+    <link_ctn id="Core-link0" />
+  </zoneRoute>
+
+    <!-- Routes edge <-> core -->
+    <zoneRoute src="edge-0-l0" dst="core-zone_0" gw_src="edge-0-l0_cluster-edge-0-l0_router"
+                gw_dst="core_router_0" symmetrical="YES">
+      <link_ctn id="Backbone-link0" />
+      </zoneRoute>
+    <zoneRoute src="edge-1-l0" dst="core-zone_0" gw_src="edge-1-l0_cluster-edge-1-l0_router"
+                gw_dst="core_router_0" symmetrical="YES">
+      <link_ctn id="Backbone-link1" />
+      </zoneRoute>
+    <zoneRoute src="edge-2-l0" dst="core-zone_0" gw_src="edge-2-l0_cluster-edge-2-l0_router"
+                gw_dst="core_router_0" symmetrical="YES">
+      <link_ctn id="Backbone-link2" />
+      </zoneRoute>
+    <zoneRoute src="edge-3-l0" dst="core-zone_0" gw_src="edge-3-l0_cluster-edge-3-l0_router"
+                gw_dst="core_router_0" symmetrical="YES">
+      <link_ctn id="Backbone-link3" />
+      </zoneRoute>
+    <zoneRoute src="edge-4-l0" dst="core-zone_0" gw_src="edge-4-l0_cluster-edge-4-l0_router"
+                gw_dst="core_router_0" symmetrical="YES">
+      <link_ctn id="Backbone-link4" />
+      </zoneRoute>
+    <zoneRoute src="edge-5-l0" dst="core-zone_0" gw_src="edge-5-l0_cluster-edge-5-l0_router"
+                gw_dst="core_router_0" symmetrical="YES">
+      <link_ctn id="Backbone-link5" />
+      </zoneRoute>
+    <zoneRoute src="edge-6-l0" dst="core-zone_0" gw_src="edge-6-l0_cluster-edge-6-l0_router"
+                gw_dst="core_router_0" symmetrical="YES">
+      <link_ctn id="Backbone-link6" />
+      </zoneRoute>
+    <zoneRoute src="edge-7-l0" dst="core-zone_0" gw_src="edge-7-l0_cluster-edge-7-l0_router"
+                gw_dst="core_router_0" symmetrical="YES">
+      <link_ctn id="Backbone-link7" />
+      </zoneRoute>
+    <zoneRoute src="edge-8-l0" dst="core-zone_0" gw_src="edge-8-l0_cluster-edge-8-l0_router"
+                gw_dst="core_router_0" symmetrical="YES">
+      <link_ctn id="Backbone-link8" />
+      </zoneRoute>
+    <zoneRoute src="edge-9-l0" dst="core-zone_0" gw_src="edge-9-l0_cluster-edge-9-l0_router"
+                gw_dst="core_router_0" symmetrical="YES">
+      <link_ctn id="Backbone-link9" />
+      </zoneRoute>
+    <zoneRoute src="edge-10-l0" dst="core-zone_0" gw_src="edge-10-l0_cluster-edge-10-l0_router"
+                gw_dst="core_router_0" symmetrical="YES">
+      <link_ctn id="Backbone-link10" />
+      </zoneRoute>
+    <zoneRoute src="edge-11-l0" dst="core-zone_0" gw_src="edge-11-l0_cluster-edge-11-l0_router"
+                gw_dst="core_router_0" symmetrical="YES">
+      <link_ctn id="Backbone-link11" />
+      </zoneRoute>
+    <zoneRoute src="edge-12-l0" dst="core-zone_0" gw_src="edge-12-l0_cluster-edge-12-l0_router"
+                gw_dst="core_router_0" symmetrical="YES">
+      <link_ctn id="Backbone-link12" />
+      </zoneRoute>
+    <zoneRoute src="edge-13-l0" dst="core-zone_0" gw_src="edge-13-l0_cluster-edge-13-l0_router"
+                gw_dst="core_router_0" symmetrical="YES">
+      <link_ctn id="Backbone-link13" />
+      </zoneRoute>
+
+  <!-- Routes edge layer <-> edge layers above -->
+
+    <!-- Routes edge <-> end-user -->
+    <zoneRoute src="wlan0" dst="edge-0-l0" gw_src="WIFIrouter0"
+                gw_dst="edge-0-l0_cluster-edge-0-l0_router" symmetrical="YES">
+      <link_ctn id="Collector0"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan1" dst="edge-0-l0" gw_src="WIFIrouter1"
+                gw_dst="edge-0-l0_cluster-edge-0-l0_router" symmetrical="YES">
+      <link_ctn id="Collector1"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan2" dst="edge-0-l0" gw_src="WIFIrouter2"
+                gw_dst="edge-0-l0_cluster-edge-0-l0_router" symmetrical="YES">
+      <link_ctn id="Collector2"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan3" dst="edge-0-l0" gw_src="WIFIrouter3"
+                gw_dst="edge-0-l0_cluster-edge-0-l0_router" symmetrical="YES">
+      <link_ctn id="Collector3"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan4" dst="edge-1-l0" gw_src="WIFIrouter4"
+                gw_dst="edge-1-l0_cluster-edge-1-l0_router" symmetrical="YES">
+      <link_ctn id="Collector4"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan5" dst="edge-1-l0" gw_src="WIFIrouter5"
+                gw_dst="edge-1-l0_cluster-edge-1-l0_router" symmetrical="YES">
+      <link_ctn id="Collector5"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan6" dst="edge-1-l0" gw_src="WIFIrouter6"
+                gw_dst="edge-1-l0_cluster-edge-1-l0_router" symmetrical="YES">
+      <link_ctn id="Collector6"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan7" dst="edge-1-l0" gw_src="WIFIrouter7"
+                gw_dst="edge-1-l0_cluster-edge-1-l0_router" symmetrical="YES">
+      <link_ctn id="Collector7"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan8" dst="edge-2-l0" gw_src="WIFIrouter8"
+                gw_dst="edge-2-l0_cluster-edge-2-l0_router" symmetrical="YES">
+      <link_ctn id="Collector8"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan9" dst="edge-2-l0" gw_src="WIFIrouter9"
+                gw_dst="edge-2-l0_cluster-edge-2-l0_router" symmetrical="YES">
+      <link_ctn id="Collector9"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan10" dst="edge-2-l0" gw_src="WIFIrouter10"
+                gw_dst="edge-2-l0_cluster-edge-2-l0_router" symmetrical="YES">
+      <link_ctn id="Collector10"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan11" dst="edge-2-l0" gw_src="WIFIrouter11"
+                gw_dst="edge-2-l0_cluster-edge-2-l0_router" symmetrical="YES">
+      <link_ctn id="Collector11"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan12" dst="edge-3-l0" gw_src="WIFIrouter12"
+                gw_dst="edge-3-l0_cluster-edge-3-l0_router" symmetrical="YES">
+      <link_ctn id="Collector12"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan13" dst="edge-3-l0" gw_src="WIFIrouter13"
+                gw_dst="edge-3-l0_cluster-edge-3-l0_router" symmetrical="YES">
+      <link_ctn id="Collector13"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan14" dst="edge-3-l0" gw_src="WIFIrouter14"
+                gw_dst="edge-3-l0_cluster-edge-3-l0_router" symmetrical="YES">
+      <link_ctn id="Collector14"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan15" dst="edge-3-l0" gw_src="WIFIrouter15"
+                gw_dst="edge-3-l0_cluster-edge-3-l0_router" symmetrical="YES">
+      <link_ctn id="Collector15"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan16" dst="edge-4-l0" gw_src="WIFIrouter16"
+                gw_dst="edge-4-l0_cluster-edge-4-l0_router" symmetrical="YES">
+      <link_ctn id="Collector16"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan17" dst="edge-4-l0" gw_src="WIFIrouter17"
+                gw_dst="edge-4-l0_cluster-edge-4-l0_router" symmetrical="YES">
+      <link_ctn id="Collector17"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan18" dst="edge-4-l0" gw_src="WIFIrouter18"
+                gw_dst="edge-4-l0_cluster-edge-4-l0_router" symmetrical="YES">
+      <link_ctn id="Collector18"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan19" dst="edge-4-l0" gw_src="WIFIrouter19"
+                gw_dst="edge-4-l0_cluster-edge-4-l0_router" symmetrical="YES">
+      <link_ctn id="Collector19"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan20" dst="edge-5-l0" gw_src="WIFIrouter20"
+                gw_dst="edge-5-l0_cluster-edge-5-l0_router" symmetrical="YES">
+      <link_ctn id="Collector20"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan21" dst="edge-5-l0" gw_src="WIFIrouter21"
+                gw_dst="edge-5-l0_cluster-edge-5-l0_router" symmetrical="YES">
+      <link_ctn id="Collector21"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan22" dst="edge-5-l0" gw_src="WIFIrouter22"
+                gw_dst="edge-5-l0_cluster-edge-5-l0_router" symmetrical="YES">
+      <link_ctn id="Collector22"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan23" dst="edge-5-l0" gw_src="WIFIrouter23"
+                gw_dst="edge-5-l0_cluster-edge-5-l0_router" symmetrical="YES">
+      <link_ctn id="Collector23"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan24" dst="edge-6-l0" gw_src="WIFIrouter24"
+                gw_dst="edge-6-l0_cluster-edge-6-l0_router" symmetrical="YES">
+      <link_ctn id="Collector24"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan25" dst="edge-6-l0" gw_src="WIFIrouter25"
+                gw_dst="edge-6-l0_cluster-edge-6-l0_router" symmetrical="YES">
+      <link_ctn id="Collector25"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan26" dst="edge-6-l0" gw_src="WIFIrouter26"
+                gw_dst="edge-6-l0_cluster-edge-6-l0_router" symmetrical="YES">
+      <link_ctn id="Collector26"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan27" dst="edge-6-l0" gw_src="WIFIrouter27"
+                gw_dst="edge-6-l0_cluster-edge-6-l0_router" symmetrical="YES">
+      <link_ctn id="Collector27"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan28" dst="edge-7-l0" gw_src="WIFIrouter28"
+                gw_dst="edge-7-l0_cluster-edge-7-l0_router" symmetrical="YES">
+      <link_ctn id="Collector28"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan29" dst="edge-7-l0" gw_src="WIFIrouter29"
+                gw_dst="edge-7-l0_cluster-edge-7-l0_router" symmetrical="YES">
+      <link_ctn id="Collector29"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan30" dst="edge-7-l0" gw_src="WIFIrouter30"
+                gw_dst="edge-7-l0_cluster-edge-7-l0_router" symmetrical="YES">
+      <link_ctn id="Collector30"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan31" dst="edge-7-l0" gw_src="WIFIrouter31"
+                gw_dst="edge-7-l0_cluster-edge-7-l0_router" symmetrical="YES">
+      <link_ctn id="Collector31"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan32" dst="edge-8-l0" gw_src="WIFIrouter32"
+                gw_dst="edge-8-l0_cluster-edge-8-l0_router" symmetrical="YES">
+      <link_ctn id="Collector32"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan33" dst="edge-8-l0" gw_src="WIFIrouter33"
+                gw_dst="edge-8-l0_cluster-edge-8-l0_router" symmetrical="YES">
+      <link_ctn id="Collector33"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan34" dst="edge-8-l0" gw_src="WIFIrouter34"
+                gw_dst="edge-8-l0_cluster-edge-8-l0_router" symmetrical="YES">
+      <link_ctn id="Collector34"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan35" dst="edge-8-l0" gw_src="WIFIrouter35"
+                gw_dst="edge-8-l0_cluster-edge-8-l0_router" symmetrical="YES">
+      <link_ctn id="Collector35"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan36" dst="edge-9-l0" gw_src="WIFIrouter36"
+                gw_dst="edge-9-l0_cluster-edge-9-l0_router" symmetrical="YES">
+      <link_ctn id="Collector36"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan37" dst="edge-9-l0" gw_src="WIFIrouter37"
+                gw_dst="edge-9-l0_cluster-edge-9-l0_router" symmetrical="YES">
+      <link_ctn id="Collector37"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan38" dst="edge-9-l0" gw_src="WIFIrouter38"
+                gw_dst="edge-9-l0_cluster-edge-9-l0_router" symmetrical="YES">
+      <link_ctn id="Collector38"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan39" dst="edge-9-l0" gw_src="WIFIrouter39"
+                gw_dst="edge-9-l0_cluster-edge-9-l0_router" symmetrical="YES">
+      <link_ctn id="Collector39"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan40" dst="edge-10-l0" gw_src="WIFIrouter40"
+                gw_dst="edge-10-l0_cluster-edge-10-l0_router" symmetrical="YES">
+      <link_ctn id="Collector40"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan41" dst="edge-10-l0" gw_src="WIFIrouter41"
+                gw_dst="edge-10-l0_cluster-edge-10-l0_router" symmetrical="YES">
+      <link_ctn id="Collector41"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan42" dst="edge-10-l0" gw_src="WIFIrouter42"
+                gw_dst="edge-10-l0_cluster-edge-10-l0_router" symmetrical="YES">
+      <link_ctn id="Collector42"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan43" dst="edge-10-l0" gw_src="WIFIrouter43"
+                gw_dst="edge-10-l0_cluster-edge-10-l0_router" symmetrical="YES">
+      <link_ctn id="Collector43"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan44" dst="edge-11-l0" gw_src="WIFIrouter44"
+                gw_dst="edge-11-l0_cluster-edge-11-l0_router" symmetrical="YES">
+      <link_ctn id="Collector44"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan45" dst="edge-11-l0" gw_src="WIFIrouter45"
+                gw_dst="edge-11-l0_cluster-edge-11-l0_router" symmetrical="YES">
+      <link_ctn id="Collector45"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan46" dst="edge-11-l0" gw_src="WIFIrouter46"
+                gw_dst="edge-11-l0_cluster-edge-11-l0_router" symmetrical="YES">
+      <link_ctn id="Collector46"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan47" dst="edge-11-l0" gw_src="WIFIrouter47"
+                gw_dst="edge-11-l0_cluster-edge-11-l0_router" symmetrical="YES">
+      <link_ctn id="Collector47"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan48" dst="edge-12-l0" gw_src="WIFIrouter48"
+                gw_dst="edge-12-l0_cluster-edge-12-l0_router" symmetrical="YES">
+      <link_ctn id="Collector48"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan49" dst="edge-12-l0" gw_src="WIFIrouter49"
+                gw_dst="edge-12-l0_cluster-edge-12-l0_router" symmetrical="YES">
+      <link_ctn id="Collector49"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan50" dst="edge-12-l0" gw_src="WIFIrouter50"
+                gw_dst="edge-12-l0_cluster-edge-12-l0_router" symmetrical="YES">
+      <link_ctn id="Collector50"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan51" dst="edge-12-l0" gw_src="WIFIrouter51"
+                gw_dst="edge-12-l0_cluster-edge-12-l0_router" symmetrical="YES">
+      <link_ctn id="Collector51"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan52" dst="edge-13-l0" gw_src="WIFIrouter52"
+                gw_dst="edge-13-l0_cluster-edge-13-l0_router" symmetrical="YES">
+      <link_ctn id="Collector52"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan53" dst="edge-13-l0" gw_src="WIFIrouter53"
+                gw_dst="edge-13-l0_cluster-edge-13-l0_router" symmetrical="YES">
+      <link_ctn id="Collector53"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan54" dst="edge-13-l0" gw_src="WIFIrouter54"
+                gw_dst="edge-13-l0_cluster-edge-13-l0_router" symmetrical="YES">
+      <link_ctn id="Collector54"/>
+
+      </zoneRoute>
+    <zoneRoute src="wlan55" dst="edge-13-l0" gw_src="WIFIrouter55"
+                gw_dst="edge-13-l0_cluster-edge-13-l0_router" symmetrical="YES">
+      <link_ctn id="Collector55"/>
+
+      </zoneRoute>
+
+  </zone>
+</platform>
+
