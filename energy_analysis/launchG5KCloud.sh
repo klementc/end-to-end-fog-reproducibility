@@ -1,5 +1,5 @@
-buildDir="/home/clem/Code/gitlab.inria.fr/clement/wifi_paper_use_cases/microservices/build/"
-#buildDir="/home/ccourageuxsudan/wifi_paper_use_cases/microservices/build/"
+buildDir="../build/"
+#buildDir="../build/"
 
 appType=("14APPS_video_cloud" "14APPS_video_cloud_coloc")
 confAppT=("../energy_analysis/config/14APPS_cloud.config" "../energy_analysis/config/14APPS_cloud_coloc.config")
@@ -27,13 +27,13 @@ do
       bash analyse.sh out_${suffix}_tcp "out_${suffix}_tcp"
       echo "Finished ${prefixes[$platf]}"
       echo "Generate plots"
-      Rscript genPlot.R "out_${suffix}_tcp"
+      Rscript genPlot.R "out_${suffix}_tcp" ${PWD}
       #evince "respdf/out_${suffix}_tcp_summary.pdf" &
 
       bash analyse.sh out_${suffix}_udp "out_${suffix}_udp"
       echo "Finished ${prefixes[$platf]}"
       echo "Generate plots"
-      Rscript genPlot.R "out_${suffix}_udp"
+      Rscript genPlot.R "out_${suffix}_udp" ${PWD}
       #evince "respdf/out_${suffix}_udp_summary.pdf" &
     done
   done

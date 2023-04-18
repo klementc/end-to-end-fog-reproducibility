@@ -12,9 +12,11 @@ library(ggsci)
 library(reshape2)
 library(stringr)
 
-setwd("/home/clem/Code/gitlab.inria.fr/clement/wifi_paper_use_cases/microservices/energy_analysis/")
+#setwd("/home/clem/Code/gitlab.inria.fr/clement/wifi_paper_use_cases/microservices/energy_analysis/")
 args = commandArgs(trailingOnly=TRUE)
 prefix<-args[1]
+path<-args[2]
+setwd(path)
 d_comDur <- as_tibble(read.csv(paste("./res/",prefix,"_comDurs.csv", sep="")))
 d_energy <- as_tibble(read.csv(paste("./res/",prefix,"_energy.csv", sep="")))
 d_execDur <- as_tibble(read.csv(paste("./res/",prefix,"_execDurs.csv", sep="")))
