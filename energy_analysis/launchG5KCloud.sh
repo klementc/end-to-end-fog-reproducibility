@@ -1,5 +1,4 @@
 buildDir="../build/"
-#buildDir="../build/"
 
 appType=("14APPS_video_cloud" "14APPS_video_cloud_coloc")
 confAppT=("../energy_analysis/config/14APPS_cloud.config" "../energy_analysis/config/14APPS_cloud_coloc.config")
@@ -21,7 +20,7 @@ do
       #${buildDir}/energy_analysis/${appType[$appT]} ../energy_analysis/platforms/platf_16FOG_${nbHops[$nbH]}hops.xml ${confAppT[$appT]} ${confPoolT[$appT]} ${execR[$netS]} ${netSize[$netS]} --log="elasticInstance.thres:debug elastic.thres:debug dataSource.thres:debug run_log.thres:debug elasticPolicyCPU.thres:debug" > out_${suffix}_tcp 2>&1
 
       # Run cloud experiment UDP
-      #${buildDir}/energy_analysis/${appType[$appT]} ../energy_analysis/platforms/platf_16FOG_${nbHops[$nbH]}hops.xml ${confAppT[$appT]} ${confPoolT[$appT]} ${execR[$netS]} ${netSize[$netS]} --log="elasticInstance.thres:debug elastic.thres:debug dataSource.thres:debug run_log.thres:debug elasticPolicyCPU.thres:debug" --cfg="network/TCP-gamma:0"> out_${suffix}_udp 2>&1
+      #${buildDir}/energy_analysis/${appType[$appT]} ../energy_analysis/platforms/platf_16FOG_${nbHops[$nbH]}hops.xml ${confAppT[$appT]} ${confPoolT[$appT]} ${execR[$netS]} ${netSize[$netS]} --log="elasticInstance.thres:debug elastic.thres:debug dataSource.thres:debug run_log.thres:debug elasticPolicyCPU.thres:debug" --cfg="network/TCP-gamma:0  network/model:CM02"> out_${suffix}_udp 2>&1
 
       # Generate analysis
       bash analyse.sh out_${suffix}_tcp "out_${suffix}_tcp"
