@@ -1,0 +1,39 @@
+<?xml version='1.0'?>
+<!DOCTYPE platform SYSTEM "https://simgrid.org/simgrid.dtd">
+
+<platform version="4.1">
+
+  <zone id="world" routing="Full">
+    <!--<zone id="gateway" routing="Full">
+        <host id="OUT" speed="1Gf" core="1" />
+    </zone>-->
+    <zone id="wlan1" routing="Wifi">
+      <!-- First declare the Access Point (ie, the wifi media) -->
+      <prop id="access_point" value="WIFIrouter1" />
+      <!-- Declare the stations of this wifi zone -->
+      <host id="STA0" speed="1Gf" core="1"></host>
+      <host id="STA1" speed="1Gf" core="1"></host>
+      <host id="STA2" speed="1Gf" core="1"></host>
+      <host id="STA3" speed="1Gf" core="1"></host>
+      <host id="STA4" speed="1Gf" core="1"></host>
+      <host id="STA5" speed="1Gf" core="1"></host>
+      <host id="STA6" speed="1Gf" core="1"></host>
+      <host id="STA7" speed="1Gf" core="1"></host>
+      <host id="STA8" speed="1Gf" core="1"></host>
+      <host id="STA9" speed="1Gf" core="1"></host>
+
+      <link id="AP1" sharing_policy="WIFI" bandwidth="44.23Mbps"  latency="0ms">
+        <prop id = "control_duration" value = "0.002"/>
+        <prop id = "wifi_watt_values" value = "0:1.14:0.94:0.10"/>
+      </link>
+      <host id="WIFIrouter1" speed="1Gf" core="1"/>
+    </zone>
+
+    <!-- AS Routing -->
+    <!--<link id="Collector_0" sharing_policy="SHARED" bandwidth="500Mbps" latency="0ms" />
+    <zoneRoute src="wlan1" dst="gateway" gw_src="WIFIrouter1" gw_dst="OUT">
+      <link_ctn id="Collector_0" />
+    </zoneRoute>-->
+
+  </zone>
+</platform>

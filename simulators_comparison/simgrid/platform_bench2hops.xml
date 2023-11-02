@@ -1,0 +1,14 @@
+<?xml version='1.0'?>
+<!DOCTYPE platform SYSTEM "https://simgrid.org/simgrid.dtd">
+<platform version="4.1">
+  <zone id="AS5-4" routing="Full">
+    <host id="device1" speed="1Gf" core="1"/>
+    <host id="device2" speed="1Gf" core="1"/>
+    <link id="link0" bandwidth="50Mbps" latency="0ms"/>
+    <link id="link1" bandwidth="50Mbps" latency="0ms"/>
+    <route src="device1" dst="device2">
+      <link_ctn id="link0"/>
+      <link_ctn id="link1"/>
+    </route>
+  </zone>
+</platform>

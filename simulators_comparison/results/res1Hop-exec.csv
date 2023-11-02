@@ -1,0 +1,6 @@
+simulator,type,nbF,execCost,lat,flowS,start,end,seed,src,dst
+YAFS,net,1,1000,0ms,3125000,15,15.5,0,src,dst
+YAFS,exec,1,1000,0ms,3125000,15.5,16.5,0,src,dst
+simgrid,net,1,1000,0ms,3125000,15.000000,15.541237,0,src,dst
+simgrid,exec,1,1000,0ms,3125000,15.541237,16.541237,0,NA,NA
+ns3,net,1,1000,0ms,3125000,15,15.5254,1,src,dst

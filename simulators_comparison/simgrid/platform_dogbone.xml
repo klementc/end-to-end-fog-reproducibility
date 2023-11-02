@@ -1,0 +1,25 @@
+<?xml version='1.0'?>
+<!DOCTYPE platform SYSTEM "https://simgrid.org/simgrid.dtd">
+<platform version="4.1">
+  <zone id="AS5-4" routing="Full">
+    <host id="src_0" speed="1Gf" core="1"/>
+    <host id="src_1" speed="1Gf" core="1"/>
+    <host id="dst" speed="1Gf" core="1"/>
+    <link id="link0" bandwidth="50Mbps" latency="0ms"/>
+    <link id="link1" bandwidth="50Mbps" latency="0ms"/>
+    <link id="linkdev" bandwidth="50Mbps" latency="0ms"/>
+    <link id="linkdst" bandwidth="50Mbps" latency="0ms"/>
+
+    <route src="src_0" dst="dst">
+      <link_ctn id="link0"/>
+      <link_ctn id="linkdev"/>
+      <link_ctn id="linkdst"/>
+    </route>
+
+    <route src="src_1" dst="dst">
+      <link_ctn id="link1"/>
+      <link_ctn id="linkdev"/>
+      <link_ctn id="linkdst"/>
+    </route>
+  </zone>
+</platform>
