@@ -1,20 +1,27 @@
+You can find here the files and results of the comparison between the output of ns-3, SimGrid, YAFS and IFogSim simulations against real-world measurements of executions and communications durations measured on [Grid'5000](https://www.grid5000.fr/w/Grid5000:Home).
+
+# Files
+You might need to modify the launcher with your ns-3's path, and move the YAFS python files to your YAFS installation repository.
+
+For real-world measurements, we use Grid'5000. You need Enoslib install on your machine and a grid'5000 account to execute this scenario on your own. Launchers are in [./real_world](./real_world). Reserve nodes with [./real_world/test_enos.py](./real_world/test_enos.py).
+
+Simulators launchers:
+- [1hop-exec scenario](bench1Hop-exec.sh)
+- [1hop-net scenario](bench1Hop-net.sh)
+- [2Hop-exec scenario](bench2Hops-exec.sh)
+- [2Hop-net scenario](bench2Hops-net.sh)
+- [2Hop-lat scenario](bench2Hops-lat.sh)
+- [Dogbone](benchDogbone.sh)
+- [Wi-Fi](benchWifi.sh)
+
+Results in [./results/](./results/) with jupyter notebook.
+
 ---
-title: Scenarios in/validation
-updated: 2023-09-26 14:37:11Z
-created: 2023-09-20 13:57:24Z
----
+# **Scenarios**
 
+## 1. Scenarios 1hop
 
-```mermaid
-graph LR;
-	sensor_1-->dev_1;
-  dev_1-->dev_2;
-	dev_2-->dev_3
-```
-
-# 1. Scenarios 1hop
-
-## Platforme
+### Platforme
 
 ```mermaid
 graph LR;
@@ -22,7 +29,7 @@ graph LR;
 ```
 
 
-## 1.1 1hop-net
+### 1.1 1hop-net
 - network >> cpu
 - netowrk flow size: 100Mb = 2s par message
 - exec size: 500MIPS = 0.5s par exec
@@ -31,7 +38,7 @@ graph LR;
 - **scheduling interval: 10**
 
 
-## 1.2 1hop-exec
+### 1.2 1hop-exec
 
 - cpu >> network
 - netowrk flow size: 25Mb = 0.5s par message
@@ -42,11 +49,7 @@ graph LR;
 **COMMENTAIRE: comms ok, mais je ne comprends rien aux execs IFS, scheduling interval qui fait tout déconner en plus**
 
 
-## 1.3 1hop-latency
-
-**todo**
-
-# 2. Scenarios 2hops
+## 2. Scenarios 2hops
 
 ```mermaid
 graph LR;
@@ -54,7 +57,7 @@ graph LR;
 	dev_2-->dev_3
 ```
 
-## 2.1 2hops-net
+### 2.1 2hops-net
 - network >> cpu
 - netowrk flow size: 100Mb = 2s par message
 - exec size: 500MIPS = 0.5s par exec
@@ -62,7 +65,7 @@ graph LR;
 - nbReq: De 1 à 10 lancées en meme temps
 - **scheduling interval: 10**
 
-## 2.2 2hops-exec
+### 2.2 2hops-exec
 
 - cpu >> network
 - netowrk flow size: 25Mb = 0.5s par message
@@ -71,14 +74,15 @@ graph LR;
 - nbReq: De 1 à 10 lancées en meme temps
 - **scheduling interval: 10**
 
-## 2.3 2hops-lat
+### 2.3 2hops-lat
 - cpu = 8s/req
 - flow size: 50Mb = 1s/req
 - lat: {0, 50, 100}ms
 - nbReq: de 1 à 5
 
-# 3. Semi-Dogbone :)
+## 3. Semi-Dogbone :)
 
+We cannot do a real dogbone due to the tree structure of IFogSim
 
 ```mermaid
 graph LR;
